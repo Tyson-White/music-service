@@ -1,0 +1,38 @@
+.startPanel {
+
+  display: flex;
+  align-items: center;
+
+  &__button {
+    position: relative;
+    z-index: 10;
+    width: 3.42rem;
+    height: 3.42rem;
+    background-color: #e7e7e7;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &_left {
+      transform: rotate(-90deg);
+    }
+
+    &_right {
+      transform: rotate(90deg);
+    }
+  }
+
+  &__trackSlider {
+    display: flex;
+    width: fit-content;
+    margin: 0 auto;
+
+    width: 17.84rem;
+    overflow: visible;
+
+    transition: 0.5s;
+
+  }
+}

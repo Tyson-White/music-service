@@ -1,0 +1,14 @@
+.home {
+
+  .musicList {
+
+    display: flex;
+    flex-direction: column;
+    gap: 1.42rem;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}

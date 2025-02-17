@@ -1,0 +1,121 @@
+.playerBar {
+
+  position: absolute;
+  bottom: 0.42rem;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 99%;
+  height: 4.52rem;
+  border-radius: 30px;
+  background: #000;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  transition: 0.4s;
+
+  &__hideButton {
+    position: absolute;
+    left: 50%;
+    top: -1.72rem;
+    width: 10rem;
+    height: 1.42rem;
+    background-color: #0000001c;
+    transform: translate(-50%, 0);
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      transform: rotate(180deg);
+      transition: 0.3s;
+    }
+
+    &_rotate {
+      svg {
+        transform: rotate(0deg);
+      }
+    }
+  }
+
+}
+
+.playerBar_hidden {
+  bottom: -4.82rem;
+}
+
+.trackInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.84rem;
+
+  &__image {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 3.42rem;
+    height: 3.42rem;
+  }
+
+  &__titles {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #fff;
+  }
+
+}
+
+.controlElements {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.44rem;
+
+  &__buttons {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    gap: 1.42rem;
+  }
+
+  &__next {
+    transform: rotate(180deg);
+  }
+
+  &__timeline {
+    display: flex;
+    align-items: center;
+    gap: 0.84rem;
+    color: #fff;
+    font-size: 0.94rem;
+
+    input[type=range] {
+      width: 400px;
+      height: 4px;
+      transition: 0.3s;
+
+      &::-ms-thumb {
+        background-color: #fff;
+
+        &:hover {
+          background-color: #fff;
+          opacity: 1;
+        }
+      }
+
+      &:hover {
+        // transform: scale(1.05);
+        opacity: 1;
+      }
+    }
+
+  }
+
+}

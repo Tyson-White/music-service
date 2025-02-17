@@ -1,0 +1,49 @@
+.diskWrapper {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.disk {
+  position: relative;
+  min-width: 17.84rem;
+  min-height: 17.84rem;
+  aspect-ratio: 1/1;
+  border-radius: 100%;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  transition: 0.3s;
+
+  &__centerCircle {
+    position: relative;
+    width: 3.42rem;
+    height: 3.42rem;
+    background-color: #EBEBEB;
+    border-radius: 100%;
+  }
+}
+
+.trackInfo {
+  margin-top: 0.84rem;
+  opacity: 1;
+
+  transition: 0.3s;
+
+  &_hidden {
+    opacity: 0;
+  }
+
+  &__name {
+    font-size: 1.25rem;
+  }
+
+  p {
+    text-align: center;
+  }
+}

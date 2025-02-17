@@ -1,0 +1,72 @@
+.musicCard {
+  width: 100%;
+  padding: 0.42rem 0;
+  cursor: pointer;
+  overflow: hidden;
+
+  display: grid;
+  grid-template-columns: 4rem repeat(4, 1fr);
+
+  transition: 0.2s;
+
+  &:hover {
+    background-color: #f0f0f0;
+  }
+
+  &__playButton {
+
+    position: absolute;
+    opacity: 1;
+
+    left: 0.42rem;
+
+    transition: 0.3s;
+
+    svg {
+      path {
+        fill: #000
+      }
+    }
+
+    &_hidden {
+      opacity: 0;
+      left: -2.42rem;
+    }
+  }
+
+  &__placeText {
+    position: absolute;
+    left: 0.42rem;
+    transition: 0.3s;
+
+    &_hidden {
+      left: -2.42rem;
+    }
+  }
+
+  &:hover {
+
+    .musicCard__playButton {
+      opacity: 1;
+      left: 0.42rem;
+    }
+
+    .musicCard__placeText {
+      opacity: 0;
+      left: -2.42rem;
+
+    }
+  }
+
+  &__item {
+    position: relative;
+
+    &:first-child {
+      display: flex;
+
+
+    }
+  }
+
+
+}

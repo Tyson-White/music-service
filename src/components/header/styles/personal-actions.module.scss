@@ -1,0 +1,22 @@
+.personal-actions {
+
+  display: flex;
+  align-items: center;
+  gap: 1.42rem;
+
+  .avatar {
+
+    width: 2.42rem;
+    height: 2.42rem;
+    border-radius: 100%;
+    background-color: #F6F6F6;
+    border: 1px solid #D4D4D4;
+
+    cursor: pointer;
+  }
+}
+
+.icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}

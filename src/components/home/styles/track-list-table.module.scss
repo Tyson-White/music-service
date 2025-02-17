@@ -1,0 +1,16 @@
+.table {
+  margin-top: 1.25rem;
+
+  &__header {
+    display: grid;
+    grid-template-columns: 4rem repeat(4, 1fr);
+
+
+    border-bottom: 1px solid #ababab2a;
+    padding: 0.82rem 0;
+  }
+
+  &__head {
+    color: #ABABAB;
+  }
+}

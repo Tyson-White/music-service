@@ -1,0 +1,39 @@
+.header {
+
+  width: 100%;
+  height: 4.52rem;
+
+  padding: 0 2.42rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__center {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.42rem;
+  }
+
+  .navigation {
+    display: flex;
+    gap: 1.42rem;
+
+    transition: 0.5s;
+
+    &__item {
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}

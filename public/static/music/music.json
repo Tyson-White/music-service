@@ -1,0 +1,22 @@
+{
+  "music": [
+    {
+      "id": 0,
+      "name": "Цена",
+      "author": "madkid",
+      "path": "/static/music/цена-madkid.mp3",
+      "image": "https://avatars.yandex.net/get-music-content/5413909/13d7978c.p.13992820/m1000x1000?webp=false",
+      "duration": "2:08",
+      "date": "22.02.2024"
+    },
+    {
+      "id": 1,
+      "name": "Аляска куртка",
+      "author": "Паранойя",
+      "path": "/static/music/аляска_куртка-паранойя.mp3",
+      "image": "https://avatars.yandex.net/get-music-content/5413909/13d7978c.p.13992820/m1000x1000?webp=false",
+      "duration": "2:01",
+      "date": "22.02.2024"
+    }
+  ]
+}
