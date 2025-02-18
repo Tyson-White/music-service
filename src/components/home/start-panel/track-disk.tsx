@@ -1,52 +1,77 @@
 import { ITrackData } from "@/shared/types/player-context.types";
 import styles from "./styles/track-disk.module.scss";
-import { FC } from "react";
+import { FC, useContext } from "react";
 import Image from "next/image";
+import { PlayerContext } from "@/components/provider/player-provider";
+import PauseIcon from "@/shared/ui/svg/pause-icon";
+import PlayIcon from "@/shared/ui/svg/play-icon";
 
 interface ITrackDiskProps extends ITrackData {
-  index: number;
-  currentIndex: number;
+    index: number;
+    currentIndex: number;
+    setCurrentIndex: (index: number) => void;
 }
 
 const SIZE_RATE = 0.15;
 
-const TrackDisk: FC<ITrackDiskProps> = ({ index, name, author, image, currentIndex }) => {
-  const diskOffset = Math.abs(currentIndex - index);
-  const diskSize = 1 - diskOffset * SIZE_RATE;
+const TrackDisk: FC<ITrackDiskProps> = (props) => {
+    const { index, name, author, image, currentIndex, setCurrentIndex, id } = props;
 
-  const calculateDiskOffset = () => {
-    // right side
-    if (currentIndex - index < 0) {
-      return `-${(1 - diskSize) * 100}%`;
-    }
+    const diskOffset = Math.abs(currentIndex - index);
+    const diskSize = 1 - diskOffset * SIZE_RATE;
 
-    // left side
-    if (currentIndex - index > 0) {
-      return `${(1 - diskSize) * 100}%`;
-    }
+    const playerContext = useContext(PlayerContext);
+    const isCurrentTrack = playerContext?.trackData?.id === id;
+    const isPlaying = playerContext?.isPlay && isCurrentTrack;
 
-    return 0;
-  };
+    const handleClickPlay = () => {
+        if (!isCurrentTrack) {
+            playerContext?.setTrackData(props);
+            setCurrentIndex(index);
+        } else {
+            playerContext.togglePlay();
+        }
+    };
 
-  return (
-    <div className={styles.diskWrapper}>
-      <div
-        style={{
-          transform: `scale(${diskSize}) translate(${calculateDiskOffset()}, 0)`,
-          zIndex: currentIndex === index ? 100 : 1,
-          opacity: diskOffset === 1 ? 0.5 : diskOffset > 1 ? 0 : 1,
-        }}
-        className={styles.disk}
-      >
-        <Image src={image} fill objectFit="cover" alt={name + "-" + author} />
-        <div className={styles.disk__centerCircle} />
-      </div>
-      <div className={styles.trackInfo + ` ${currentIndex !== index ? styles.trackInfo_hidden : ""}`}>
-        <p className={styles.trackInfo__name}>{name}</p>
-        <p className={styles.trackInfo__author}>{author}</p>
-      </div>
-    </div>
-  );
+    const calculateDiskOffset = () => {
+        // right side
+        if (currentIndex - index < 0) {
+            return `-${(1 - diskSize) * 100}%`;
+        }
+
+        // left side
+        if (currentIndex - index > 0) {
+            return `${(1 - diskSize) * 100}%`;
+        }
+
+        return 0;
+    };
+
+    return (
+        <div onClick={handleClickPlay} className={styles.diskWrapper}>
+            <div
+                style={{
+                    transform: `scale(${diskSize}) translate(${calculateDiskOffset()}, 0)`,
+                    zIndex: currentIndex === index ? 100 : 1,
+                    opacity: diskOffset === 1 ? 0.5 : diskOffset > 1 ? 0 : 1,
+                }}
+                className={styles.disk}
+            >
+                <Image src={image} fill objectFit="cover" alt={name + "-" + author} />
+                <div className={styles.disk__centerCircle}>
+                    {isPlaying ? <PauseIcon className={"icon"} /> : <PlayIcon className={"icon"} />}
+                </div>
+            </div>
+            <div
+                className={
+                    styles.trackInfo + ` ${currentIndex !== index ? styles.trackInfo_hidden : ""}`
+                }
+            >
+                <p className={styles.trackInfo__name}>{name}</p>
+                <p className={styles.trackInfo__author}>{author}</p>
+            </div>
+        </div>
+    );
 };
 
 export default TrackDisk;
