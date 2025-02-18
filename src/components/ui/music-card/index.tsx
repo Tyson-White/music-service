@@ -4,7 +4,7 @@ import styles from "./styles/music-card.module.scss";
 import PlayIcon from "../svg/play-icon";
 import PauseIcon from "../svg/pause-icon";
 import { useContext } from "react";
-import { PlayerContext } from "@/components/provider/player-provider";
+import { PlayerContext } from "@/components/providers/player-provider";
 import { ITrackData } from "@/shared/types/player-context.types";
 
 interface IMusicCardProps extends ITrackData {

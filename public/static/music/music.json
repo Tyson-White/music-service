@@ -14,8 +14,17 @@
       "name": "Аляска куртка",
       "author": "Паранойя",
       "path": "/static/music/аляска_куртка-паранойя.mp3",
-      "image": "https://avatars.yandex.net/get-music-content/5413909/13d7978c.p.13992820/m1000x1000?webp=false",
+      "image": "https://i.ytimg.com/vi/aAH15DYXPyo/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGC8gUyhyMA8=&amp;rs=AOn4CLD26mdJInGiQ7c6YpCGW6TLKVVnEA",
       "duration": "2:01",
+      "date": "22.02.2024"
+    },
+    {
+      "id": 2,
+      "name": "Out Weast",
+      "author": "Travis Scott",
+      "path": "/static/music/out_weast.mp3",
+      "image": "https://avatars.mds.yandex.net/i?id=9e314f43cdbeb98ad4efd78c8cc9e22b_l-5879065-images-thumbs&n=13",
+      "duration": "2:37",
       "date": "22.02.2024"
     }
   ]

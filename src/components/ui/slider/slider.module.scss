@@ -1,0 +1,45 @@
+.rangerWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.progressBar {
+  position: absolute;
+  height: 100%;
+  background-color: #3c3c3c;
+  pointer-events: none;
+  border-radius: 20px;
+  transition: linear;
+}
+
+.range[type=range] {
+  -webkit-appearance: none !important;
+  height: 6px;
+  border-radius: 20px;
+  transition: 0.3s;
+  background-color: #E4E4E4;
+  border-radius: 20px;
+
+  &::-webkit-slider-thumb {
+    position: relative;
+    appearance: none;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    background-color: #e0e0e0;
+    border-radius: 50%;
+    ;
+    // box-shadow: 0px 0px 3px #b2b2b2;
+    opacity: 0;
+    border: 4px solid #fff;
+
+  }
+
+  &:hover {
+
+    &::-webkit-slider-thumb {
+      opacity: 1;
+    }
+  }
+}

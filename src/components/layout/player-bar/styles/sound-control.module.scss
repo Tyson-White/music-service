@@ -1,0 +1,64 @@
+.soundControl {
+  position: relative;
+
+  .soundToggler {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.85rem;
+    width: 1.85rem;
+
+    &__icon {
+      width: 100%;
+      height: 100%;
+    }
+
+    &[data-state=true] {
+      .soundToggler__icon {
+        width: 1.65rem;
+        height: 1.65rem;
+      }
+    }
+  }
+
+  &__value {
+    display: flex;
+    justify-content: space-between;
+    color: #000;
+  }
+
+  &__range {
+    position: absolute;
+    right: 0;
+    width: 0rem;
+    overflow: hidden;
+
+    border-radius: 10px;
+    background-color: #ffffff;
+    border: 1px solid #eeeeee;
+    padding: 0.42rem;
+
+    opacity: 0;
+    top: -1.25rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.42rem;
+    color: #fff;
+    pointer-events: none;
+
+    transition: 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+    &_show {
+      top: -4.25rem;
+      opacity: 1;
+      width: 12rem;
+      pointer-events: all;
+
+    }
+  }
+
+  &__input {
+    width: 100%;
+  }
+}

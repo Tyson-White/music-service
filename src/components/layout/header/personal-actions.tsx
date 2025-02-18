@@ -1,6 +1,6 @@
 import styles from "./styles/personal-actions.module.scss";
-import GiftIcon from "@/shared/ui/svg/gift-icon";
-import BringIcon from "@/shared/ui/svg/bring-icon";
+import GiftIcon from "@/components/ui/svg/gift-icon";
+import BringIcon from "@/components/ui/svg/bring-icon";
 
 export default function PersonalActions() {
   return (

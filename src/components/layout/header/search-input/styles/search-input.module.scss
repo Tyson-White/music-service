@@ -1,5 +1,6 @@
 .search {
   position: absolute;
+  left: -2rem;
   pointer-events: none;
   opacity: 0;
 
@@ -12,6 +13,7 @@
   height: 2.42rem;
 
   transition: 0.3s;
+  z-index: 100;
 
   &:hover {
     background-color: rgb(240, 240, 240);
@@ -25,7 +27,7 @@
 
   &__hide {
     position: absolute;
-    right: -2.2rem;
+    right: -3.2rem;
     color: var(--text-base);
     font-size: 0.84rem;
   }

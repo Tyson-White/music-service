@@ -1,0 +1,33 @@
+.trackInfo {
+  display: flex;
+  align-items: center;
+  gap: 1.84rem;
+  height: 100%;
+
+  &__image {
+    position: relative;
+    border-radius: 0 0 0 17px;
+    overflow: hidden;
+    height: 100%;
+    aspect-ratio: 1/1;
+  }
+
+  &__titles {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.28rem;
+    color: #000;
+  }
+
+  &__name {
+    font-weight: 600;
+    font-size: 1.15rem;
+  }
+
+  &__author {
+    font-size: 1.1rem;
+    color: #323232;
+  }
+
+}

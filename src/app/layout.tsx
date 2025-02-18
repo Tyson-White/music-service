@@ -1,9 +1,9 @@
 import { Andika } from "next/font/google";
 import "@/shared/styles/globals.scss";
 import "@/shared/styles/shared.scss";
-import Navigation from "@/components/navigation";
-import Header from "@/components/header";
-import PlayerProvider from "@/components/provider/player-provider";
+import Navigation from "@/components/layout/navigation";
+import Header from "@/components/layout/header";
+import PlayerProvider from "@/components/providers/player-provider";
 import PlayerBar from "@/components/layout/player-bar";
 
 const andika = Andika({
