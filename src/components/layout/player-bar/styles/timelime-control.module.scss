@@ -12,6 +12,8 @@
     display: flex;
     justify-content: center;
     gap: 1.42rem;
+
+
   }
 
   &__trackState {
@@ -23,6 +25,12 @@
     align-items: center;
     justify-content: center;
 
+    transition: 0.3s;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
     svg {
       transform: translate(2px, 0);
     }
@@ -31,11 +39,43 @@
   &__trackState[data-state=true] {
     svg {
       transform: translate(0, 0);
+
+    }
+  }
+
+  &__previous {
+    svg {
+      path {
+        transition: 0.4s;
+      }
+    }
+
+    &:hover {
+      svg {
+        path {
+          fill: #454545;
+        }
+      }
     }
   }
 
   &__next {
     transform: rotate(180deg);
+
+    svg {
+      path {
+        transition: 0.4s;
+      }
+    }
+
+    &:hover {
+      svg {
+        path {
+          fill: #454545;
+        }
+      }
+    }
+
   }
 
   &__timeline {

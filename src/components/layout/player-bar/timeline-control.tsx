@@ -74,7 +74,7 @@ const TimelineControl = () => {
   return (
     <div className={styles.controlElements}>
       <div className={styles.controlElements__buttons}>
-        <button onClick={handlePrevPress} className={styles.controlElements__previuos}>
+        <button onClick={handlePrevPress} className={styles.controlElements__previous}>
           <PreviousIcon className={"icon"} />
         </button>
         <button onClick={togglePlay} data-state={isPlay} className={styles.controlElements__trackState}>

@@ -1,15 +1,14 @@
 "use client";
 
 import TrackListTable from "@/components/pages/home/track-list-table";
-import { PlayerContext } from "@/components/providers/player-provider";
 import styles from "@/components/pages/search-results/styles/search-results.module.scss";
 import { filterTrackList } from "@/shared/lib/array-filters";
-import { useContext } from "react";
+import usePlayerStore from "@/shared/store/player-store";
 
 const page = ({ params }) => {
-  const playerContext = useContext(PlayerContext);
+  const { usingTrackList } = usePlayerStore();
 
-  const filtredTrackList = filterTrackList(playerContext?.trackList, params.value);
+  const filtredTrackList = filterTrackList(usingTrackList, params.value);
 
   return (
     <div className={"content-container " + styles.searchResultsPage}>

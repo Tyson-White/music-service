@@ -15,12 +15,34 @@
     align-items: center;
     justify-content: center;
 
+    transition: 0.4s;
+
+    &:hover {
+      background-color: rgb(82, 82, 82);
+
+      svg {
+        path {
+          fill: #fff
+        }
+      }
+    }
+
     &_left {
       transform: rotate(-90deg);
+
+      &:active {
+        // transform: rotate(-90deg) translate(0px, -5px);
+        animation: slideLeft 1s forwards;
+      }
     }
 
     &_right {
       transform: rotate(90deg);
+
+      &:active {
+        // transform: rotate(90deg) translate(0px, 5px);
+        animation: slideRight 1s forwards;
+      }
     }
   }
 
@@ -34,5 +56,25 @@
 
     transition: 0.5s;
 
+  }
+}
+
+@keyframes slideLeft {
+  0% {
+    transform: rotate(-90deg) translate(0, 0);
+  }
+
+  100% {
+    transform: rotate(-90deg) translate(0, -5px);
+  }
+}
+
+@keyframes slideRight {
+  0% {
+    transform: rotate(90deg) translate(0, 0);
+  }
+
+  100% {
+    transform: rotate(90deg) translate(0, 5px);
   }
 }
