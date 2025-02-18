@@ -4,18 +4,17 @@ import StartPanel from "@/components/pages/home/start-panel";
 
 import styles from "@/components/pages/home/styles/home.module.scss";
 import TrackListTable from "@/components/pages/home/track-list-table";
-import { PlayerContext } from "@/components/providers/player-provider";
-import { useContext } from "react";
+import usePlayerStore from "@/shared/store/player-store";
 
 export default function Home() {
-  const playerContext = useContext(PlayerContext);
+  const trackList = usePlayerStore((state) => state.usingTrackList);
 
   return (
     <div className={"content-container " + styles.home}>
       <StartPanel />
 
       <div className={styles.home__grid}>
-        <TrackListTable list={playerContext?.trackList} />
+        <TrackListTable list={trackList} />
       </div>
     </div>
   );

@@ -3,9 +3,8 @@
 import styles from "./styles/music-card.module.scss";
 import PlayIcon from "../svg/play-icon";
 import PauseIcon from "../svg/pause-icon";
-import { useContext } from "react";
-import { PlayerContext } from "@/components/providers/player-provider";
 import { ITrackData } from "@/shared/types/player-context.types";
+import usePlayerStore from "@/shared/store/player-store";
 
 interface IMusicCardProps extends ITrackData {
   className?: string;
@@ -14,18 +13,19 @@ interface IMusicCardProps extends ITrackData {
 
 export default function MusicCard(props: IMusicCardProps) {
   const { id, name, author, place, duration, date } = props;
-  const playerContext = useContext(PlayerContext);
 
-  const isCurrentTrack = playerContext?.trackData?.id === id;
-  const isPlaying = playerContext?.isPlay && isCurrentTrack;
+  const { trackData, setTrackData, togglePlay, isPlay } = usePlayerStore();
+
+  const isCurrentTrack = trackData?.id === id;
+  const isPlaying = isPlay && isCurrentTrack;
 
   const handlePressAction = () => {
     if (!isCurrentTrack) {
-      playerContext?.setTrackData(props);
+      setTrackData(props);
       return;
     }
 
-    playerContext.togglePlay();
+    togglePlay();
   };
 
   return (

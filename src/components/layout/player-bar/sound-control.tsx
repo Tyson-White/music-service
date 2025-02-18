@@ -1,19 +1,19 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./styles/sound-control.module.scss";
 import SoundOnIcon from "@/components/ui/svg/sound-on-icon";
 import SoundOffIcon from "@/components/ui/svg/sound-off-icon";
-import { PlayerContext } from "@/components/providers/player-provider";
 import Slider from "@/components/ui/slider";
 import { useDebounce } from "@/shared/hooks/useDebounce";
+import usePlayerStore from "@/shared/store/player-store";
 
 const SoundControl = () => {
-  const playerContext = useContext(PlayerContext);
+  const { audio } = usePlayerStore();
   const [soundVolume, setSoundVolume] = useState(0.5);
   const [controlShowing, setControlShowing] = useState<boolean>(false);
   const { debounceValue: controlShowingDebounced } = useDebounce<boolean>(controlShowing, 300);
 
   const toggleSound = () => {
-    if (playerContext?.file) {
+    if (audio) {
       if (soundVolume > 0) {
         setSoundVolume(0);
       } else {
@@ -23,9 +23,8 @@ const SoundControl = () => {
   };
 
   useEffect(() => {
-    if (!playerContext) return;
-
-    playerContext.file.volume = soundVolume;
+    if (!audio) return;
+    audio.volume = soundVolume;
   }, [soundVolume]);
 
   return (

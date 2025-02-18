@@ -1,11 +1,9 @@
 import Image from "next/image";
 import styles from "./styles/track-information.module.scss";
-import { useContext } from "react";
-import { PlayerContext } from "@/components/providers/player-provider";
+import usePlayerStore from "@/shared/store/player-store";
 
 const TrackInformation = () => {
-  const playerContext = useContext(PlayerContext);
-  const trackData = playerContext?.trackData;
+  const { trackData } = usePlayerStore();
 
   return (
     <div className={styles.trackInfo}>

@@ -1,10 +1,10 @@
 import { ITrackData } from "@/shared/types/player-context.types";
 import styles from "./styles/track-disk.module.scss";
-import { FC, useContext } from "react";
+import { FC } from "react";
 import Image from "next/image";
-import { PlayerContext } from "@/components/providers/player-provider";
 import PauseIcon from "@/components/ui/svg/pause-icon";
 import PlayIcon from "@/components/ui/svg/play-icon";
+import usePlayerStore from "@/shared/store/player-store";
 
 interface ITrackDiskProps extends ITrackData {
   index: number;
@@ -20,16 +20,17 @@ const TrackDisk: FC<ITrackDiskProps> = (props) => {
   const diskOffset = Math.abs(currentIndex - index);
   const diskSize = 1 - diskOffset * SIZE_RATE;
 
-  const playerContext = useContext(PlayerContext);
-  const isCurrentTrack = playerContext?.trackData?.id === id;
-  const isPlaying = playerContext?.isPlay && isCurrentTrack;
+  const { trackData, isPlay, setTrackData, togglePlay } = usePlayerStore();
+
+  const isCurrentTrack = trackData?.id === id;
+  const isPlaying = isPlay && isCurrentTrack;
 
   const handleClickPlay = () => {
     if (!isCurrentTrack) {
-      playerContext?.setTrackData(props);
+      setTrackData(props);
       setCurrentIndex(index);
     } else {
-      playerContext.togglePlay();
+      togglePlay();
     }
   };
 

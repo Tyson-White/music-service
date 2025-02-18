@@ -3,23 +3,22 @@ import PauseIcon from "@/components/ui/svg/pause-icon";
 import PlayIcon from "@/components/ui/svg/play-icon";
 import { formatTime } from "@/shared/lib/track-time";
 import styles from "./styles/timelime-control.module.scss";
-import { ChangeEvent, useContext, useEffect, useRef, useState } from "react";
-import { PlayerContext } from "@/components/providers/player-provider";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import Slider from "@/components/ui/slider";
+import usePlayerStore from "@/shared/store/player-store";
 
-const TimelimeControl = () => {
-  const playerContext = useContext(PlayerContext);
-  const trackList = playerContext?.trackList;
-  const trackData = playerContext?.trackData;
+const TimelineControl = () => {
+  const { trackData, usingTrackList, audio, setTrackData, isPlay, togglePlay, trackTimerValue, setTrackTimerValue } =
+    usePlayerStore();
+  const trackList = usingTrackList;
 
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const [changing, setChanging] = useState(false);
-  const [trackTime, setTrackTime] = useState(0);
 
   const startMonitoringTime = () => {
-    if (playerContext?.file) {
+    if (audio) {
       timerRef.current = setInterval(() => {
-        setTrackTime(playerContext?.file.currentTime || 0);
+        setTrackTimerValue(audio.currentTime || 0);
       }, 1);
     }
   };
@@ -31,19 +30,19 @@ const TimelimeControl = () => {
   };
 
   const changeTime = (e: ChangeEvent<HTMLInputElement>) => {
-    setTrackTime(Number(e.target.value));
+    setTrackTimerValue(Number(e.target.value));
   };
 
   const onEndChangeTime = () => {
-    if (playerContext?.file) {
-      playerContext.file.currentTime = trackTime;
+    if (audio) {
+      audio.currentTime = trackTimerValue;
     }
 
     setChanging(false);
   };
 
   useEffect(() => {
-    if (changing) {
+    if (changing || !isPlay) {
       stopMonitoringTime();
     } else {
       startMonitoringTime();
@@ -52,7 +51,7 @@ const TimelimeControl = () => {
     return () => {
       stopMonitoringTime();
     };
-  }, [changing]);
+  }, [changing, isPlay]);
 
   const currentIndexInTrackList =
     !trackData || !trackList ? -1 : trackList.findIndex((track) => track.id === trackData.id);
@@ -61,7 +60,7 @@ const TimelimeControl = () => {
     if (!trackList) return;
 
     if (currentIndexInTrackList > 0) {
-      playerContext?.setTrackData(trackList[currentIndexInTrackList - 1]);
+      setTrackData(trackList[currentIndexInTrackList - 1]);
     }
   };
 
@@ -69,7 +68,7 @@ const TimelimeControl = () => {
     if (!trackList) return;
 
     if (currentIndexInTrackList < trackList.length - 1) {
-      playerContext?.setTrackData(trackList[currentIndexInTrackList + 1]);
+      setTrackData(trackList[currentIndexInTrackList + 1]);
     }
   };
   return (
@@ -78,12 +77,8 @@ const TimelimeControl = () => {
         <button onClick={handlePrevPress} className={styles.controlElements__previuos}>
           <PreviousIcon className={"icon"} />
         </button>
-        <button
-          onClick={playerContext?.togglePlay}
-          data-state={playerContext?.isPlay}
-          className={styles.controlElements__trackState}
-        >
-          {playerContext?.isPlay ? <PauseIcon className={"icon"} /> : <PlayIcon className={"icon"} />}
+        <button onClick={togglePlay} data-state={isPlay} className={styles.controlElements__trackState}>
+          {isPlay ? <PauseIcon className={"icon"} /> : <PlayIcon className={"icon"} />}
         </button>
 
         <button onClick={handleNextPress} className={styles.controlElements__next}>
@@ -92,21 +87,21 @@ const TimelimeControl = () => {
       </div>
 
       <div className={styles.controlElements__timeline}>
-        <span className={styles.controleElements__timeDuration}>{formatTime(trackTime)}</span>
+        <span className={styles.controleElements__timeDuration}>{formatTime(trackTimerValue)}</span>
         <Slider
           className={styles.controlElements__range}
           onMouseDown={() => setChanging(true)}
           onMouseUp={() => onEndChangeTime()}
-          value={trackTime}
+          value={trackTimerValue}
           onChange={changeTime}
-          max={playerContext?.file.duration}
+          max={audio.duration}
           type="range"
         />
         {/* <input className={styles.controlElements__range} /> */}
-        <span className={styles.controleElements__timeDuration}>{formatTime(playerContext?.file.duration || 0)}</span>
+        <span className={styles.controleElements__timeDuration}>{formatTime(audio.duration || 0)}</span>
       </div>
     </div>
   );
 };
 
-export default TimelimeControl;
+export default TimelineControl;

@@ -1,14 +1,14 @@
 "use client";
 
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import TrackDisk from "./track-disk";
-import { PlayerContext } from "@/components/providers/player-provider";
 
 import styles from "./styles/start-panel.module.scss";
 import ArrowIcon from "@/components/ui/svg/arrow-icon";
+import usePlayerStore from "@/shared/store/player-store";
 
 export default function StartPanel() {
-  const playerContext = useContext(PlayerContext);
+  const trackList = usePlayerStore((state) => state.usingTrackList);
 
   const [currentTrackIndex, setCurrentTrackIndex] = useState<number>(0);
 
@@ -19,18 +19,18 @@ export default function StartPanel() {
   };
 
   const handleSlideRight = () => {
-    if (playerContext && currentTrackIndex < playerContext?.trackList.length - 1) {
+    if (currentTrackIndex < trackList.length - 1) {
       setCurrentTrackIndex(currentTrackIndex + 1);
     }
   };
 
   useEffect(() => {
-    if (playerContext && playerContext.trackList.length > 3) {
-      setCurrentTrackIndex(playerContext.trackList.length / 2);
+    if (trackList.length > 3) {
+      setCurrentTrackIndex(trackList.length / 2);
     }
-  }, [playerContext]);
+  }, [trackList]);
 
-  if (!playerContext?.trackList) return;
+  if (!trackList) return;
 
   return (
     <div className={styles.startPanel}>
@@ -41,7 +41,7 @@ export default function StartPanel() {
         style={{ transform: `translate(${-currentTrackIndex * 100}%, 0)` }}
         className={styles.startPanel__trackSlider}
       >
-        {playerContext?.trackList.map((item, index) => (
+        {trackList.map((item, index) => (
           <TrackDisk
             currentIndex={currentTrackIndex}
             index={index}
