@@ -12,7 +12,7 @@ interface ITrackDiskProps extends ITrackData {
   setCurrentIndex: (index: number) => void;
 }
 
-const SIZE_RATE = 0.15;
+const SIZE_RATE = 0.25;
 
 const TrackDisk: FC<ITrackDiskProps> = (props) => {
   const { index, name, author, image, currentIndex, setCurrentIndex, id } = props;

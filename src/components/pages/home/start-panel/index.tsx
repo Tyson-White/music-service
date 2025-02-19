@@ -11,15 +11,17 @@ export default function StartPanel() {
   const trackList = usePlayerStore((state) => state.usingTrackList);
 
   const [currentTrackIndex, setCurrentTrackIndex] = useState<number>(0);
+  const isFirstTrackInList = currentTrackIndex === 0;
+  const isLastTrackInList = currentTrackIndex < trackList.length - 1;
 
   const handleSlideLeft = () => {
-    if (currentTrackIndex > 0) {
+    if (!isFirstTrackInList) {
       setCurrentTrackIndex(currentTrackIndex - 1);
     }
   };
 
   const handleSlideRight = () => {
-    if (currentTrackIndex < trackList.length - 1) {
+    if (isLastTrackInList) {
       setCurrentTrackIndex(currentTrackIndex + 1);
     }
   };
@@ -34,9 +36,16 @@ export default function StartPanel() {
 
   return (
     <div className={styles.startPanel}>
-      <button onClick={handleSlideLeft} className={styles.startPanel__button + " " + styles.startPanel__button_left}>
-        <ArrowIcon className="icon" />
-      </button>
+      {
+        <button
+          onClick={handleSlideLeft}
+          className={`${styles.startPanel__button} ${styles.startPanel__button_left} ${
+            isFirstTrackInList ? styles.startPanel__button_hidden : ""
+          }`}
+        >
+          <ArrowIcon className="icon" />
+        </button>
+      }
       <div
         style={{ transform: `translate(${-currentTrackIndex * 100}%, 0)` }}
         className={styles.startPanel__trackSlider}
@@ -51,7 +60,12 @@ export default function StartPanel() {
           />
         ))}
       </div>
-      <button onClick={handleSlideRight} className={styles.startPanel__button + " " + styles.startPanel__button_right}>
+      <button
+        onClick={handleSlideRight}
+        className={`${styles.startPanel__button} ${styles.startPanel__button_right} ${
+          !isLastTrackInList ? styles.startPanel__button_hidden : ""
+        }`}
+      >
         <ArrowIcon className="icon" />
       </button>
     </div>

@@ -39,7 +39,9 @@ const Timeline: FC<
 
       <input
         onMouseDown={() => setTimelineIsChanging(true)}
+        onTouchStart={() => setTimelineIsChanging(true)}
         onMouseUp={() => onEndChangeTime()}
+        onTouchEnd={() => onEndChangeTime()}
         value={trackTimerValue}
         onChange={changeTime}
         min={0}

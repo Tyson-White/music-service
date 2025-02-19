@@ -5,9 +5,11 @@ import SoundOffIcon from "@/components/ui/svg/sound-off-icon";
 import Slider from "@/components/ui/slider";
 import { useDebounce } from "@/shared/hooks/useDebounce";
 import usePlayerStore from "@/shared/store/player-store";
+import { LocalStorageKeys } from "@/shared/types/localstorage.enums";
 
 const SoundControl = () => {
   const { audio } = usePlayerStore();
+  const [isDidMount, setIsDidMount] = useState(false);
   const [soundVolume, setSoundVolume] = useState(0.5);
   const [controlShowing, setControlShowing] = useState<boolean>(false);
   const { debounceValue: controlShowingDebounced } = useDebounce<boolean>(controlShowing, 300);
@@ -23,9 +25,16 @@ const SoundControl = () => {
   };
 
   useEffect(() => {
-    if (!audio) return;
+    if (!audio || !isDidMount) return;
     audio.volume = soundVolume;
+    localStorage.setItem(LocalStorageKeys.VOLUME, soundVolume.toString());
   }, [soundVolume]);
+
+  useEffect(() => {
+    const volume = Number(localStorage.getItem(LocalStorageKeys.VOLUME));
+    setSoundVolume(volume);
+    setIsDidMount(true);
+  }, []);
 
   return (
     <div

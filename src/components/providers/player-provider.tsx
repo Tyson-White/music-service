@@ -9,6 +9,7 @@ const PlayerProvider: FC<PropsWithChildren> = ({ children }) => {
 
   useEffect(() => {
     setUsingTrackList(tracks.music);
+
     setAudio(new Audio());
   }, []);
   return children;

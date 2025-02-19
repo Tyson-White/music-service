@@ -37,9 +37,11 @@ export default function MusicCard(props: IMusicCardProps) {
           <span className={styles.musicCard__placeText + ` ${isPlaying ? styles.musicCard__placeText_hidden : ""}`}>
             {place}
           </span>
-          <div className={styles.musicCard__playButton + ` ${!isPlaying ? styles.musicCard__playButton_hidden : ""}`}>
+          <button
+            className={styles.musicCard__playButton + ` ${!isPlaying ? styles.musicCard__playButton_hidden : ""}`}
+          >
             {isPlaying ? <PauseIcon className={"icon"} /> : <PlayIcon className={"icon"} />}
-          </div>
+          </button>
         </div>
         <div className={styles.musicCard__item + " " + styles.musicCard__item_name}>{name}</div>
         <div className={styles.musicCard__item + " " + styles.musicCard__item_artist}>{author}</div>
