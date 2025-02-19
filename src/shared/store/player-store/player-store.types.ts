@@ -7,7 +7,11 @@ export interface IPlayerStore {
   setTrackData: (track: ITrackData) => void;
   audio: HTMLAudioElement;
   trackTimerValue: number;
+  timerId: NodeJS.Timeout | null;
+  timelineIsChanging: boolean;
 
+  setTimelineIsChanging: (value: boolean) => void;
+  setTimerId: (value: NodeJS.Timeout) => void;
   setUsingTrackList: (value: ITrackData[]) => void;
   setTrackTimerValue: (value: number) => void;
   togglePlay: () => void;

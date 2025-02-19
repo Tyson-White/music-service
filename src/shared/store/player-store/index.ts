@@ -7,6 +7,11 @@ const usePlayerStore = create<IPlayerStore>((set, get) => ({
   usingTrackList: [],
   trackData: null,
   trackTimerValue: 0,
+  timerId: null,
+  timelineIsChanging: false,
+
+  setTimelineIsChanging: (value) => set({ timelineIsChanging: value }),
+  setTimerId: (timer) => set({ timerId: timer }),
 
   setTrackTimerValue: (value) => {
     const isEnded = get().audio.ended;

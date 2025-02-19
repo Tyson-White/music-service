@@ -10,6 +10,9 @@
   align-items: center;
   justify-content: space-between;
 
+  @media (max-width: 851px) {
+    padding: 0 10px;
+  }
 
   &__center {
     position: absolute;

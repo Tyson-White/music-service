@@ -29,6 +29,10 @@ body {
 
   box-sizing: border-box;
   padding: 20px;
+
+  @media screen and (max-width: 851px) {
+    padding: 0;
+  }
 }
 
 .app-wrapper {
@@ -40,14 +44,26 @@ body {
   background-color: rgba(0, 0, 0, 0.702);
   overflow: hidden;
 
+  @media screen and (max-width: 851px) {
+    border-radius: 0;
+  }
+
   .app-content {
     position: relative;
     width: 100%;
     background-color: #fff;
     border-radius: 20px;
+
+    @media screen and (max-width: 851px) {
+      border-radius: 0;
+    }
   }
 }
 
 .content-container {
   padding: 2.42rem;
+
+  @media screen and (max-width: 851px) {
+    padding: 10px;
+  }
 }

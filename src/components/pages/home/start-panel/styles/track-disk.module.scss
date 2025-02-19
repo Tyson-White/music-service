@@ -24,6 +24,16 @@
 
     border: 2px solid #545454;
 
+    @media (max-width: 1278px) {
+        min-width: 14.84rem;
+        min-height: 14.84rem;
+    }
+
+    @media (max-width: 1127px) {
+        min-width: 10.84rem;
+        min-height: 10.84rem;
+    }
+
     &:hover {
         border-radius: 0;
         scale: 1.1;

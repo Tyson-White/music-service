@@ -1,0 +1,44 @@
+.control {
+  height: 100%;
+  margin: 10px;
+  border-radius: 10px;
+  background-color: rgb(176, 176, 176);
+
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  justify-content: space-between;
+  gap: 10px;
+
+  &__image {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  &__info {
+    flex-grow: 1;
+  }
+
+  &__trackState {
+    svg {
+
+      path {
+        fill: #000;
+      }
+    }
+  }
+
+  &__next {
+
+    svg {
+      transform: rotate(180deg);
+
+      path {
+        fill: #000;
+      }
+    }
+  }
+}

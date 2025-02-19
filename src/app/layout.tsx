@@ -5,6 +5,7 @@ import Navigation from "@/components/layout/navigation";
 import Header from "@/components/layout/header";
 import PlayerProvider from "@/components/providers/player-provider";
 import PlayerBar from "@/components/layout/player-bar";
+import PlayerBarMobile from "@/components/layout/player-bar-mobile";
 
 const andika = Andika({
   variable: "--font-andika-sans",
@@ -27,6 +28,7 @@ export default function RootLayout({
               <Header />
               {children}
               <PlayerBar />
+              <PlayerBarMobile />
             </PlayerProvider>
           </div>
         </div>

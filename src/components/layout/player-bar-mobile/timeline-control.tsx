@@ -1,13 +1,11 @@
 import PreviousIcon from "@/components/ui/svg/previous-icon";
 import PauseIcon from "@/components/ui/svg/pause-icon";
 import PlayIcon from "@/components/ui/svg/play-icon";
-import { formatTime } from "@/shared/lib/track-time";
 import styles from "./styles/timelime-control.module.scss";
 import useTimelineControl from "@/shared/hooks/useTimelineControl";
-import Timeline from "@/components/reusable/timeline";
 
 const TimelineControl = () => {
-  const { audio, isPlay, handleNextPress, handlePrevPress, trackTimerValue, togglePlay } = useTimelineControl();
+  const { isPlay, handleNextPress, handlePrevPress, togglePlay } = useTimelineControl();
 
   return (
     <div className={styles.controlElements}>
@@ -22,12 +20,6 @@ const TimelineControl = () => {
         <button onClick={handleNextPress} className={styles.controlElements__next}>
           <PreviousIcon className={"icon"} />
         </button>
-      </div>
-
-      <div className={styles.controlElements__timeline}>
-        <span className={styles.controleElements__timeDuration}>{formatTime(trackTimerValue)}</span>
-        <Timeline />
-        <span className={styles.controleElements__timeDuration}>{formatTime(audio.duration || 0)}</span>
       </div>
     </div>
   );

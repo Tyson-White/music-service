@@ -12,13 +12,14 @@ interface ITrackListTableProps {
 const TrackListTable: FC<ITrackListTableProps> = ({ list }) => {
   return (
     <div className={styles.table}>
-      <div className={styles.table__header}>
+      <div className={styles.table__header + " desktop"}>
         <div className={styles.table__head}>Place</div>
         <div className={styles.table__head}>Title</div>
         <div className={styles.table__head}>Artist</div>
         <div className={styles.table__head}>Duration</div>
-        <div className={styles.table__head}>Date</div>
+        <div className={styles.table__head}>Listening</div>
       </div>
+      <div className="mobile">All tracks</div>
       {list ? (
         <ul className={styles.table__body}>
           {list.map((item, index) => (

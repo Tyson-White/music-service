@@ -4,31 +4,28 @@ import styles from "./styles/player-bar.module.scss";
 import { useState } from "react";
 
 import ArrowIcon from "@/components/ui/svg/arrow-icon";
-import TrackInformation from "./track-information";
-import TimelimeControl from "./timeline-control";
-import SoundControl from "./sound-control";
+import Timeline from "@/components/reusable/timeline";
+import TrackControl from "./track-control";
 
-const PlayerBar = () => {
+const PlayerBarMobile = () => {
   const [barIsShowing, setBarIsShowing] = useState(true);
 
-  if (!window || window.screen.height < 851) return;
-
   return (
-    <div className={styles.playerBar + ` ${barIsShowing ? "" : styles.playerBar_hidden} desktop`}>
+    <div className={styles.playerBar + ` ${barIsShowing ? "" : styles.playerBar_hidden}`}>
       <button
         onClick={() => setBarIsShowing((prev) => !prev)}
         className={styles.playerBar__hideButton + ` ${!barIsShowing ? styles.playerBar__hideButton_rotate : ""}`}
       >
         <ArrowIcon className="icon" />
       </button>
-
-      <TrackInformation />
-      <TimelimeControl />
-      <div className={styles.playerBar__actions}>
-        <SoundControl />
-      </div>
+      <Timeline
+        className={styles.playerBar__timeline}
+        progressBarClassName={styles.playerBar__progressBar}
+        wrapperClassName={styles.playerBar__timelineWrapper}
+      />
+      <TrackControl />
     </div>
   );
 };
 
-export default PlayerBar;
+export default PlayerBarMobile;

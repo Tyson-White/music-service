@@ -15,7 +15,7 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <Breadcrumbs />
-      <div className={styles.header__center}>
+      <div className={styles.header__center + " desktop"}>
         <SearchInput isActive={searchIsActive} toggler={setSearchIsActive} />
         <nav className={styles.navigation + ` ${searchIsActive ? styles.hidden : ""}`}>
           {MainNavigationList.map((navigationItem) => (

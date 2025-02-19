@@ -1,0 +1,90 @@
+.controlElements {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.44rem;
+
+  &__buttons {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    gap: 1.42rem;
+
+
+  }
+
+  &__trackState {
+    background-color: #D9D9D9;
+    width: 2.37rem;
+    height: 2.37rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: 0.3s;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    svg {
+      transform: translate(2px, 0);
+    }
+  }
+
+  &__trackState[data-state=true] {
+    svg {
+      transform: translate(0, 0);
+
+    }
+  }
+
+  &__previous {
+    svg {
+      path {
+        transition: 0.4s;
+      }
+    }
+
+    &:hover {
+      svg {
+        path {
+          fill: #454545;
+        }
+      }
+    }
+  }
+
+  &__next {
+    transform: rotate(180deg);
+
+    svg {
+      path {
+        transition: 0.4s;
+      }
+    }
+
+    &:hover {
+      svg {
+        path {
+          fill: #454545;
+        }
+      }
+    }
+
+  }
+
+  &__timeline {
+    display: flex;
+    align-items: center;
+    gap: 0.84rem;
+    color: #454545;
+    font-size: 0.94rem;
+  }
+
+  &__range {
+    width: 400px;
+  }
+
+}

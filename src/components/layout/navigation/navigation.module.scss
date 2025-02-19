@@ -1,4 +1,8 @@
 .navigation {
   width: 22.42rem;
   height: 100%;
+
+  @media (max-width: 1000px) {
+    display: none;
+  }
 }

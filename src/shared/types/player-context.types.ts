@@ -7,7 +7,7 @@ export interface ITrackData {
   image: string;
   path: string;
   duration: string;
-  date: string;
+  listening: number;
 }
 
 export interface IPlayerContextValue {

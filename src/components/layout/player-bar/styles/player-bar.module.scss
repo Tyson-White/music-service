@@ -17,6 +17,10 @@
 
   transition: 0.4s;
 
+  @media (max-width: 851px) {
+    display: none;
+  }
+
   &__hideButton {
     position: absolute;
     left: 50%;
