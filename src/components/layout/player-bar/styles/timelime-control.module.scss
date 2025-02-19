@@ -7,6 +7,8 @@
   flex-direction: column;
   gap: 0.44rem;
 
+
+
   &__buttons {
     flex-grow: 1;
     display: flex;
@@ -84,10 +86,16 @@
     gap: 0.84rem;
     color: #454545;
     font-size: 0.94rem;
+    width: 500px;
   }
 
-  &__range {
-    width: 400px;
+  &__timelineWrapper {
+    width: 100%;
   }
+
+  &__timelineRange {
+    width: 100%;
+  }
+
 
 }

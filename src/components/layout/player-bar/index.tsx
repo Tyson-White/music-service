@@ -7,12 +7,15 @@ import ArrowIcon from "@/components/ui/svg/arrow-icon";
 import TrackInformation from "./track-information";
 import TimelimeControl from "./timeline-control";
 import SoundControl from "./sound-control";
+import useDeviceByResolution from "@/shared/hooks/useDeviceByResolution";
 
 const PlayerBar = () => {
   const [barIsShowing, setBarIsShowing] = useState(true);
+  const device = useDeviceByResolution();
 
   // if (!window || window.screen.height < 851) return;
 
+  if (device === "mobile") return;
   return (
     <div className={styles.playerBar + ` ${barIsShowing ? "" : styles.playerBar_hidden} desktop`}>
       <button

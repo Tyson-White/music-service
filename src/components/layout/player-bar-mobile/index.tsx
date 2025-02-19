@@ -6,9 +6,13 @@ import { useState } from "react";
 import ArrowIcon from "@/components/ui/svg/arrow-icon";
 import Timeline from "@/components/reusable/timeline";
 import TrackControl from "./track-control";
+import useDeviceByResolution from "@/shared/hooks/useDeviceByResolution";
 
 const PlayerBarMobile = () => {
   const [barIsShowing, setBarIsShowing] = useState(true);
+  const device = useDeviceByResolution();
+
+  if (device === "desktop") return;
 
   return (
     <div className={styles.playerBar + ` ${barIsShowing ? "" : styles.playerBar_hidden}`}>
