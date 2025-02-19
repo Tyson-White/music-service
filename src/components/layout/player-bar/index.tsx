@@ -8,6 +8,7 @@ import TrackInformation from "./track-information";
 import TimelimeControl from "./timeline-control";
 import SoundControl from "./sound-control";
 import useDeviceByResolution from "@/shared/hooks/useDeviceByResolution";
+import cn from "@/shared/lib/classNames";
 
 const PlayerBar = () => {
   const [barIsShowing, setBarIsShowing] = useState(true);
@@ -17,10 +18,10 @@ const PlayerBar = () => {
 
   if (device === "mobile") return;
   return (
-    <div className={styles.playerBar + ` ${barIsShowing ? "" : styles.playerBar_hidden} desktop`}>
+    <div className={cn(styles.playerBar, ` ${barIsShowing ? "" : styles.playerBar_hidden}`, "desktop")}>
       <button
         onClick={() => setBarIsShowing((prev) => !prev)}
-        className={styles.playerBar__hideButton + ` ${!barIsShowing ? styles.playerBar__hideButton_rotate : ""}`}
+        className={cn(styles.playerBar__hideButton, `${!barIsShowing ? styles.playerBar__hideButton_rotate : ""}`)}
       >
         <ArrowIcon className="icon" />
       </button>

@@ -2,20 +2,18 @@ import { ChangeEvent } from "react";
 import usePlayerStore from "../store/player-store";
 
 const useTimelineControl = () => {
+  const storeContext = usePlayerStore();
   const {
     audio,
-    isPlay,
     trackTimerValue,
     timerId,
     trackData,
-    timelineIsChanging,
     usingTrackList: trackList,
     setTrackTimerValue,
     setTimelineIsChanging,
     setTimerId,
     setTrackData,
-    togglePlay,
-  } = usePlayerStore();
+  } = storeContext;
 
   const startMonitoringTime = () => {
     if (audio) {
@@ -65,20 +63,13 @@ const useTimelineControl = () => {
   };
 
   return {
-    audio,
-    isPlay,
-    timelineIsChanging,
-    trackTimerValue,
-    trackData,
-    setTimelineIsChanging,
+    ...storeContext,
     handleNextPress,
     handlePrevPress,
     onEndChangeTime,
     changeTime,
     stopMonitoringTime,
     startMonitoringTime,
-    togglePlay,
-    setTrackData,
   };
 };
 
