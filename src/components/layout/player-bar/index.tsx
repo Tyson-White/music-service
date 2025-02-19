@@ -11,7 +11,7 @@ import SoundControl from "./sound-control";
 const PlayerBar = () => {
   const [barIsShowing, setBarIsShowing] = useState(true);
 
-  if (!window || window.screen.height < 851) return;
+  // if (!window || window.screen.height < 851) return;
 
   return (
     <div className={styles.playerBar + ` ${barIsShowing ? "" : styles.playerBar_hidden} desktop`}>

@@ -1,5 +1,5 @@
 export const formatTime = (time: number): string => {
-  time = time.toFixed(2);
+  time = Number(time.toFixed(2));
 
   const minutes = Math.floor(time / 60);
   const seconds = Math.floor(time % 60);

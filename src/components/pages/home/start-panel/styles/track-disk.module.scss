@@ -21,7 +21,6 @@
     justify-content: center;
     border-radius: 50%;
     transition: 0.3s;
-
     border: 2px solid #545454;
 
     @media (max-width: 1278px) {
@@ -39,7 +38,6 @@
         scale: 1.1;
     }
 
-    cursor: pointer;
 
     &__centerCircle {
         position: relative;

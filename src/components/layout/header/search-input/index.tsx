@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { KeyboardEvent, useEffect, useRef, useState } from "react";
 import styles from "./styles/search-input.module.scss";
 import SearchIcon from "@/components/ui/svg/search-icon";
 import CrossIcon from "@/components/ui/svg/cross-icon";
@@ -24,7 +24,7 @@ export default function SearchInput({ isActive, toggler }: ISearchInput) {
     toggler(false);
   };
 
-  const handleEnter = (event: KeyboardEvent) => event.key === "Enter" && onSearch();
+  const handleEnter = (event: KeyboardEvent<HTMLInputElement>) => event.key === "Enter" && onSearch();
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {

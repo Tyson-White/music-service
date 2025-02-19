@@ -5,10 +5,11 @@ import { FC, PropsWithChildren, useEffect } from "react";
 import tracks from "@/../public/static/music/music.json";
 
 const PlayerProvider: FC<PropsWithChildren> = ({ children }) => {
-  const setTrackList = usePlayerStore((state) => state.setUsingTrackList);
+  const { setUsingTrackList, setAudio } = usePlayerStore();
 
   useEffect(() => {
-    setTrackList(tracks.music);
+    setUsingTrackList(tracks.music);
+    setAudio(new Audio());
   }, []);
   return children;
 };

@@ -27,7 +27,7 @@ const TimelineControl = () => {
       <div className={styles.controlElements__timeline}>
         <span className={styles.controleElements__timeDuration}>{formatTime(trackTimerValue)}</span>
         <Timeline />
-        <span className={styles.controleElements__timeDuration}>{formatTime(audio.duration || 0)}</span>
+        <span className={styles.controleElements__timeDuration}>{formatTime(audio?.duration || 0)}</span>
       </div>
     </div>
   );

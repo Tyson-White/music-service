@@ -34,7 +34,7 @@ const Timeline: FC<
     <div className={styles.rangerWrapper + " " + wrapperClassName}>
       <div
         className={styles.progressBar + " " + progressBarClassName}
-        style={{ width: (100 / Number(audio.duration)) * Number(trackTimerValue) + "%" }}
+        style={{ width: (100 / Number(audio?.duration)) * Number(trackTimerValue) + "%" }}
       />
 
       <input
@@ -43,7 +43,7 @@ const Timeline: FC<
         value={trackTimerValue}
         onChange={changeTime}
         min={0}
-        max={audio.duration}
+        max={audio?.duration}
         className={styles.range + " " + className}
         type="range"
       />

@@ -4,12 +4,13 @@ import TrackListTable from "@/components/pages/home/track-list-table";
 import styles from "@/components/pages/search-results/styles/search-results.module.scss";
 import { filterTrackList } from "@/shared/lib/array-filters";
 import usePlayerStore from "@/shared/store/player-store";
-import { FC } from "react";
+import { useParams } from "next/navigation";
 
-const page: FC<{ params: { value: string } }> = ({ params }) => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+const Page = () => {
+  const { value } = useParams();
+
   const { usingTrackList } = usePlayerStore();
-  const decodedValue = decodeURIComponent(params.value);
+  const decodedValue = typeof value === "string" ? decodeURIComponent(value) : "";
   const filtredTrackList = filterTrackList(usingTrackList, decodedValue);
 
   return (
@@ -20,4 +21,4 @@ const page: FC<{ params: { value: string } }> = ({ params }) => {
   );
 };
 
-export default page;
+export default Page;

@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { IPlayerStore } from "./player-store.types";
 
 const usePlayerStore = create<IPlayerStore>((set, get) => ({
-  audio: new Audio(),
+  audio: null,
   isPlay: false,
   usingTrackList: [],
   trackData: null,
@@ -10,11 +10,12 @@ const usePlayerStore = create<IPlayerStore>((set, get) => ({
   timerId: null,
   timelineIsChanging: false,
 
+  setAudio: (audio) => set({ audio }),
   setTimelineIsChanging: (value) => set({ timelineIsChanging: value }),
   setTimerId: (timer) => set({ timerId: timer }),
 
   setTrackTimerValue: (value) => {
-    const isEnded = get().audio.ended;
+    const isEnded = get().audio?.ended;
     if (isEnded) {
       const currentTrackId = get().trackData?.id;
       const trackList = get().usingTrackList;
@@ -35,6 +36,8 @@ const usePlayerStore = create<IPlayerStore>((set, get) => ({
 
   setTrackData: (track) => {
     const audio = get().audio;
+
+    if (!audio) return;
 
     set({ trackData: track });
     audio.src = track.path;
