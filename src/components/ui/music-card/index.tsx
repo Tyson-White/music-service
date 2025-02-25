@@ -13,7 +13,7 @@ interface IMusicCardProps extends ITrackData {
 }
 
 export default function MusicCard(props: IMusicCardProps) {
-  const { id, name, author, place, duration, listening } = props;
+  const { id, name, author, place, duration, listening, audio } = props;
 
   const { trackData, setTrackData, togglePlay, isPlay } = usePlayerStore();
 

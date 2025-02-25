@@ -40,7 +40,7 @@ const usePlayerStore = create<IPlayerStore>((set, get) => ({
     if (!audio) return;
 
     set({ trackData: track });
-    audio.src = track.path;
+    audio.src = "http://localhost:7077/songs/" + track.audio;
 
     audio.play();
     set({ isPlay: true });

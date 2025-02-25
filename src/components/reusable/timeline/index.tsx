@@ -48,6 +48,7 @@ const Timeline: FC<
         max={audio?.duration}
         className={styles.range + " " + className}
         type="range"
+        step={0.1}
       />
     </div>
   );

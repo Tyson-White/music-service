@@ -4,7 +4,6 @@ interface NavigationListItem {
 }
 
 export const MainNavigationList: NavigationListItem[] = [
-  { name: "Home", link: "/" },
-  { name: "Playlist", link: "/playlist" },
-  { name: "Favourites", link: "/favourites" },
+  { name: "Add song", link: "/create-song" },
+  { name: "Playlists", link: "/playlist" },
 ];

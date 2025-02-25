@@ -5,6 +5,7 @@ import styles from "./styles/music-card-mobile.module.scss";
 import usePlayerStore from "@/shared/store/player-store";
 import { FC } from "react";
 import Image from "next/image";
+import ImagePlaceholder from "@/public/static/img/pic.jpeg";
 
 interface IMusicCardMobileProps extends ITrackData {
   className?: string;
@@ -20,7 +21,7 @@ const MusicCardMobile: FC<IMusicCardMobileProps> = (props) => {
   return (
     <div className={styles.musicCard + " mobile"}>
       <div className={styles.musicCard__image}>
-        {image && <Image fill objectFit="cover" src={image} alt={name + " " + author} />}
+        <Image fill objectFit="cover" src={image || ImagePlaceholder} alt={name + " " + author} />
       </div>
       <div className={styles.musicCard__info}>
         <div className={styles.musicCard__name}>{name}</div>

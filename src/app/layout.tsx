@@ -1,3 +1,5 @@
+"use client";
+
 import { Andika } from "next/font/google";
 import "@/shared/styles/globals.scss";
 import "@/shared/styles/shared.scss";
@@ -6,6 +8,11 @@ import Header from "@/components/layout/header";
 import PlayerProvider from "@/components/providers/player-provider";
 import PlayerBar from "@/components/layout/player-bar";
 import PlayerBarMobile from "@/components/layout/player-bar-mobile";
+import { useEffect } from "react";
+import axiosInstance from "@/shared/services/api/axios.config";
+import queries from "@/shared/services/api/queries";
+import usePlaylistsStore from "@/shared/store/playlists-store";
+import { EnumPlaylists } from "@/shared/store/playlists-store/playlists-store.types";
 
 const andika = Andika({
   variable: "--font-andika-sans",
@@ -18,6 +25,18 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { setPlaylistData } = usePlaylistsStore();
+
+  useEffect(() => {
+    const requestPlaylist = async () => {
+      const { data } = await axiosInstance.get(queries.getTracks);
+
+      setPlaylistData(data, EnumPlaylists.main);
+    };
+
+    requestPlaylist();
+  }, []);
+
   return (
     <html lang="en">
       <body className={`${andika.variable} antialiased`}>
@@ -28,7 +47,7 @@ export default function RootLayout({
               <Header />
               {children}
               <PlayerBar />
-              <PlayerBarMobile />
+              {/* <PlayerBarMobile /> */}
             </PlayerProvider>
           </div>
         </div>

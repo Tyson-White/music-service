@@ -5,6 +5,7 @@ import Image from "next/image";
 import PauseIcon from "@/components/ui/svg/pause-icon";
 import PlayIcon from "@/components/ui/svg/play-icon";
 import usePlayerStore from "@/shared/store/player-store";
+import ImagePlaceholder from "@/public/static/img/pic.jpeg";
 
 interface ITrackDiskProps extends ITrackData {
   index: number;
@@ -58,7 +59,7 @@ const TrackDisk: FC<ITrackDiskProps> = (props) => {
         }}
         className={styles.disk}
       >
-        <Image src={image} fill objectFit="cover" alt={name + "-" + author} />
+        <Image src={image || ImagePlaceholder} fill objectFit="cover" alt={name + "-" + author} />
         <div className={styles.disk__centerCircle}>
           {isPlaying ? <PauseIcon className={"icon"} /> : <PlayIcon className={"icon"} />}
         </div>

@@ -8,7 +8,7 @@ import Timeline from "@/components/reusable/timeline";
 
 const TimelineControl = () => {
   const { audio, isPlay, handleNextPress, handlePrevPress, trackTimerValue, togglePlay } = useTimelineControl();
-
+  console.log(trackTimerValue);
   return (
     <div className={styles.controlElements}>
       <div className={styles.controlElements__buttons}>

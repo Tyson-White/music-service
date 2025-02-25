@@ -20,7 +20,7 @@ const useTimelineControl = () => {
       setTimerId(
         setInterval(() => {
           setTrackTimerValue(audio.currentTime || 0);
-        }, 1)
+        }, 10)
       );
     }
   };
@@ -37,6 +37,7 @@ const useTimelineControl = () => {
 
   const onEndChangeTime = () => {
     if (audio) {
+      console.log(audio.currentTime, trackTimerValue);
       audio.currentTime = trackTimerValue;
     }
 

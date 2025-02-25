@@ -5,10 +5,10 @@ import TrackDisk from "./track-disk";
 
 import styles from "./styles/start-panel.module.scss";
 import ArrowIcon from "@/components/ui/svg/arrow-icon";
-import usePlayerStore from "@/shared/store/player-store";
+import usePlaylistsStore from "@/shared/store/playlists-store";
 
 export default function StartPanel() {
-  const trackList = usePlayerStore((state) => state.usingTrackList);
+  const trackList = usePlaylistsStore((state) => state.playlists.main);
 
   const [currentTrackIndex, setCurrentTrackIndex] = useState<number>(0);
   const isFirstTrackInList = currentTrackIndex === 0;

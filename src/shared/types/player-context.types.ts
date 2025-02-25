@@ -5,7 +5,7 @@ export interface ITrackData {
   name: string;
   author: string;
   image: string;
-  path: string;
+  audio: string;
   duration: string;
   listening: number;
 }
